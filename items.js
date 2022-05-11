@@ -38,11 +38,12 @@ const itemsRead = function() {
       const itemsNameObject = document.getElementsByName('items-name')[index];
       const itemsEnterObject = document.getElementsByName('items-enter')[index];
       const itemsExpireObject = document.getElementsByName('items-expire')[index];
+      const itemsDeleteObject = document.getElementsByName('items-delete')[index];
       itemsNameObject.innerHTML = items[index].name;
       itemsEnterObject.innerHTML = items[index].enter;
       itemsExpireObject.value = items[index].expire;
       // itemsUpdateObject.index = index;
-      // itemsDeleteObject.index = index;
+      itemsDeleteObject.index = index;
     }
     console.log('Readed', items);
   };
