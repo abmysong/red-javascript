@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="./index.css" rel="stylesheet">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script defer src="./items.js"></script>
 </head>
 <body>
@@ -42,7 +43,7 @@
     </header>
     <div class="contents">
       <article>
-        <form class="form-inputs">
+        <form class="form-inputs" onsubmit="event.preventDefault(); itemsCreate(this);">
           <input type="text" name="name" placeholder="Create" />
           <button class="button-create"><span class="material-icons">edit</span></button>
         </form>

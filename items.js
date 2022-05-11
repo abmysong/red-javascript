@@ -14,15 +14,14 @@ const nameText = queryString.get('input-text');
 let items;
 
 const itemsCreate = function(form) {
-  const itemNameObject = form['item-name'];
-  const itemAgeObject = form['item-age'];
+  const itemNameObject = form['name'];
   const item = {
     name: itemNameObject.value,
-    age: itemAgeObject.value
+    enter: moment().format('YYYY-MM-DD'),
+    expire: moment().add(14, 'days').format('YYYY-MM-DD')
   };
   axios.post('http://localhost:3100/api/v1/items', item).then(function() {
     itemNameObject.value = '';
-    itemAgeObject.value = '';
     itemsRead();
   });
 };
