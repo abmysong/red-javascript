@@ -35,12 +35,12 @@ const itemsRead = function() {
     for (let index in items) {
       const newDivChild = tagTrChild.cloneNode(true);
       tagTbodyParent.appendChild(newDivChild);
-      // const itemsNameObject = document.getElementsByName('items-name')[index];
-      // const itemsAgeObject = document.getElementsByName('items-age')[index];
-      // const itemsUpdateObject = document.getElementsByName('items-update')[index];
-      // const itemsDeleteObject = document.getElementsByName('items-delete')[index];
-      // itemsNameObject.value = items[index].name;
-      // itemsAgeObject.value = items[index].age;
+      const itemsNameObject = document.getElementsByName('items-name')[index];
+      const itemsEnterObject = document.getElementsByName('items-enter')[index];
+      const itemsExpireObject = document.getElementsByName('items-expire')[index];
+      itemsNameObject.innerHTML = items[index].name;
+      itemsEnterObject.innerHTML = items[index].enter;
+      itemsExpireObject.value = items[index].expire;
       // itemsUpdateObject.index = index;
       // itemsDeleteObject.index = index;
     }
