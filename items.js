@@ -29,20 +29,20 @@ const itemsCreate = function(form) {
 const itemsRead = function() {
   const successFunction = function(response) {
     items = response.data.items;
-    const tagDivParent = document.getElementById('tag-div-parent');
-    tagDivParent.innerHTML = '';
-    const tagDivChild = document.getElementById('tag-div-child');
+    const tagTbodyParent = document.getElementById('tag-tbody-parent');
+    tagTbodyParent.innerHTML = '';
+    const tagTrChild = document.getElementById('tag-tr-child');
     for (let index in items) {
-      const newDivChild = tagDivChild.cloneNode(true);
-      tagDivParent.appendChild(newDivChild);
-      const itemsNameObject = document.getElementsByName('items-name')[index];
-      const itemsAgeObject = document.getElementsByName('items-age')[index];
-      const itemsUpdateObject = document.getElementsByName('items-update')[index];
-      const itemsDeleteObject = document.getElementsByName('items-delete')[index];
-      itemsNameObject.value = items[index].name;
-      itemsAgeObject.value = items[index].age;
-      itemsUpdateObject.index = index;
-      itemsDeleteObject.index = index;
+      const newDivChild = tagTrChild.cloneNode(true);
+      tagTbodyParent.appendChild(newDivChild);
+      // const itemsNameObject = document.getElementsByName('items-name')[index];
+      // const itemsAgeObject = document.getElementsByName('items-age')[index];
+      // const itemsUpdateObject = document.getElementsByName('items-update')[index];
+      // const itemsDeleteObject = document.getElementsByName('items-delete')[index];
+      // itemsNameObject.value = items[index].name;
+      // itemsAgeObject.value = items[index].age;
+      // itemsUpdateObject.index = index;
+      // itemsDeleteObject.index = index;
     }
     console.log('Readed', items);
   };
