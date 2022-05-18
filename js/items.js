@@ -39,11 +39,13 @@ const itemsRead = function() {
       const itemsEnterObject = document.getElementsByName('items-enter')[index];
       const itemsExpireObject = document.getElementsByName('items-expire')[index];
       const itemsDeleteObject = document.getElementsByName('items-delete')[index];
+      const itemsCheckObject = document.getElementsByName('items-check')[index];
       itemsNameObject.innerHTML = items[index].name;
       itemsEnterObject.innerHTML = items[index].enter;
       itemsExpireObject.value = items[index].expire;
       itemsExpireObject.index = index;
       itemsDeleteObject.index = index;
+      itemsCheckObject.index = index;
     }
     console.log('Readed', items);
   };
@@ -62,6 +64,18 @@ const itemsUpdate = function(index) {
     expire: expire
   };
   axios.patch(url, item).then(itemsRead);
+};
+
+const itemsCheck = function(event, index) {
+  console.log(event, index);
+  // console.log(event.target.checked);
+  if (event.target.checked) {
+    // TODO: groceries create
+    console.log('TODO: groceries create');
+  } else {
+    // TODO: groceries delete
+    console.log('TODO: groceries delete');
+  }
 };
 
 itemsRead();

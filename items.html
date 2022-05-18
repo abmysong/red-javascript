@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script defer src="./js/items.js"></script>
+  <script defer src="./js/groceries.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -81,7 +82,7 @@
           <table style="display: none;">
             <tbody>
               <tr id="tag-tr-child">
-                <td><input type="checkbox" onchange="" /></td>
+                <td><input type="checkbox" name="items-check" onchange="itemsCheck(event, index)" /></td>
                 <td name="items-name"></td>
                 <td name="items-enter"></td>
                 <td class="td-expire"><input type="date" name="items-expire" value="" onchange="itemsUpdate(index);" /></td>

@@ -64,4 +64,4 @@ const groceriesUpdate = function(index) {
   axios.patch(url, grocery).then(groceriesRead);
 };
 
-groceriesRead();
+// groceriesRead();
