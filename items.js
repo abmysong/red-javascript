@@ -42,7 +42,7 @@ const itemsRead = function() {
       itemsNameObject.innerHTML = items[index].name;
       itemsEnterObject.innerHTML = items[index].enter;
       itemsExpireObject.value = items[index].expire;
-      // itemsUpdateObject.index = index;
+      itemsExpireObject.index = index;
       itemsDeleteObject.index = index;
     }
     console.log('Readed', items);
@@ -57,11 +57,9 @@ const itemsDelete = function(index) {
 
 const itemsUpdate = function(index) {
   const url = 'http://localhost:3100/api/v1/items/' + index;
-  const name = document.getElementsByName('items-name')[index].value;
-  const age = document.getElementsByName('items-age')[index].value;
+  const expire = document.getElementsByName('items-expire')[index].value;
   const item = {
-    name: name,
-    age: age
+    expire: expire
   };
   axios.patch(url, item).then(itemsRead);
 };
