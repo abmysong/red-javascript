@@ -16,6 +16,7 @@ let items;
 const itemsCreate = function(form) {
   const itemNameObject = form['name'];
   const item = {
+    uuid: uuidv4(),
     name: itemNameObject.value,
     enter: moment().format('YYYY-MM-DD'),
     expire: moment().add(14, 'days').format('YYYY-MM-DD')
@@ -67,12 +68,15 @@ const itemsUpdate = function(index) {
 };
 
 const itemsCheck = function(event, index) {
-  console.log(event, index);
-  if (event.target.checked) {
-    groceriesCreate(index);
-  } else {
-    groceriesDelete(index);
-  }
+  console.log(event, index, items);
+  const uuid = items[index].uuid;
+  groceriesDelete(uuid);
+
+  // if (event.target.checked) {
+  //   groceriesCreate(index);
+  // } else {
+  //   groceriesDelete(index);
+  // }
 };
 
 itemsRead();

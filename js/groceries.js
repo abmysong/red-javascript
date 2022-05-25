@@ -46,8 +46,8 @@ const groceriesRead = function() {
   axios.get('http://localhost:3100/api/v1/groceries').then(successFunction);
 };
 
-const groceriesDelete = function(index) {
-  const url = 'http://localhost:3100/api/v1/groceries/' + index;
+const groceriesDelete = function(uuid) {
+  const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
   axios.delete(url);
 };
 
