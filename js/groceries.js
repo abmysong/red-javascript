@@ -1,5 +1,5 @@
-const queryString = new URLSearchParams(window.location.search);
-const nameText = queryString.get('input-text');
+// const queryString = new URLSearchParams(window.location.search);
+// const nameText = queryString.get('input-text');
 // const inputTextObjects = document.getElementsByName('input-text');
 // const inputTextObject = inputTextObjects[0];
 
@@ -13,17 +13,13 @@ const nameText = queryString.get('input-text');
 
 let groceries;
 
-const groceriesCreate = function(form) {
-  const groceryNameObject = form['name'];
+const groceriesCreate = function(index) {
   const grocery = {
-    name: groceryNameObject.value,
-    enter: moment().format('YYYY-MM-DD'),
-    expire: moment().add(14, 'days').format('YYYY-MM-DD')
+    name: document.getElementsByName('items-name')[index].innerHTML,
+    enter: document.getElementsByName('items-enter')[index].innerHTML,
+    expire: document.getElementsByName('items-expire')[index].value
   };
-  axios.post('http://localhost:3100/api/v1/groceries', grocery).then(function() {
-    groceryNameObject.value = '';
-    groceriesRead();
-  });
+  axios.post('http://localhost:3100/api/v1/groceries', grocery);
 };
 
 const groceriesRead = function() {

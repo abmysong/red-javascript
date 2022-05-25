@@ -68,10 +68,8 @@ const itemsUpdate = function(index) {
 
 const itemsCheck = function(event, index) {
   console.log(event, index);
-  // console.log(event.target.checked);
   if (event.target.checked) {
-    // TODO: groceries create
-    console.log('TODO: groceries create');
+    groceriesCreate(index);
   } else {
     // TODO: groceries delete
     console.log('TODO: groceries delete');
