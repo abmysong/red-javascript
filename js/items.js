@@ -71,8 +71,7 @@ const itemsCheck = function(event, index) {
   if (event.target.checked) {
     groceriesCreate(index);
   } else {
-    // TODO: groceries delete
-    console.log('TODO: groceries delete');
+    groceriesDelete(index);
   }
 };
 
