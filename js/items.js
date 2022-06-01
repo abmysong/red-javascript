@@ -47,6 +47,8 @@ const itemsRead = function() {
       itemsExpireObject.index = index;
       itemsDeleteObject.index = index;
       itemsCheckObject.index = index;
+      // backend에서 checked = true를 받으면 check 하기
+      itemsCheckObject.checked = items[index].checked;
     }
     console.log('Readed', items);
   };
