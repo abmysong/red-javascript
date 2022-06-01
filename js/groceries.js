@@ -13,8 +13,9 @@
 
 let groceries;
 
-const groceriesCreate = function(index) {
+const groceriesCreate = function(index, uuid) {
   const grocery = {
+    uuid: uuid,
     name: document.getElementsByName('items-name')[index].innerHTML,
     enter: document.getElementsByName('items-enter')[index].innerHTML,
     expire: document.getElementsByName('items-expire')[index].value

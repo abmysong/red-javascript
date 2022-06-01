@@ -70,13 +70,12 @@ const itemsUpdate = function(index) {
 const itemsCheck = function(event, index) {
   console.log(event, index, items);
   const uuid = items[index].uuid;
-  groceriesDelete(uuid);
-
-  // if (event.target.checked) {
-  //   groceriesCreate(index);
-  // } else {
-  //   groceriesDelete(index);
-  // }
+  
+  if (event.target.checked) {
+    groceriesCreate(index, uuid);
+  } else {
+    groceriesDelete(uuid);
+  }
 };
 
 itemsRead();
