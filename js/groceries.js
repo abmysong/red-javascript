@@ -38,8 +38,7 @@ const groceriesRead = function() {
       const groceriesDeleteObject = document.getElementsByName('groceries-delete')[index];
       groceriesNameObject.innerHTML = groceries[index].name;
       groceriesEnterObject.innerHTML = groceries[index].enter;
-      groceriesExpireObject.value = groceries[index].expire;
-      groceriesExpireObject.index = index;
+      groceriesExpireObject.innerHTML = groceries[index].expire;
       groceriesDeleteObject.index = index;
     }
     console.log('Readed', groceries);
