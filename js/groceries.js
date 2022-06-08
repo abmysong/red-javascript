@@ -32,10 +32,12 @@ const groceriesRead = function() {
     for (let index in groceries) {
       const newDivChild = tagTrChild.cloneNode(true);
       tagTbodyParent.appendChild(newDivChild);
+      const groceriesNoObject = document.getElementsByName('groceries-no')[index];
       const groceriesNameObject = document.getElementsByName('groceries-name')[index];
       const groceriesEnterObject = document.getElementsByName('groceries-enter')[index];
       const groceriesExpireObject = document.getElementsByName('groceries-expire')[index];
       const groceriesDeleteObject = document.getElementsByName('groceries-delete')[index];
+      groceriesNoObject.innerHTML = Number(index) + 1;
       groceriesNameObject.innerHTML = groceries[index].name;
       groceriesEnterObject.innerHTML = groceries[index].enter;
       groceriesExpireObject.innerHTML = groceries[index].expire;
