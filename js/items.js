@@ -76,7 +76,7 @@ const itemsCheck = function(event, index) {
   if (event.target.checked) {
     groceriesCreate(index, uuid);
   } else {
-    groceriesDelete(uuid);
+    groceriesDelete(uuid, 'items');
   }
 };
 

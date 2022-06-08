@@ -39,16 +39,19 @@ const groceriesRead = function() {
       groceriesNameObject.innerHTML = groceries[index].name;
       groceriesEnterObject.innerHTML = groceries[index].enter;
       groceriesExpireObject.innerHTML = groceries[index].expire;
-      groceriesDeleteObject.index = index;
+      groceriesDeleteObject.uuid = groceries[index].uuid;
     }
     console.log('Readed', groceries);
   };
   axios.get('http://localhost:3100/api/v1/groceries').then(successFunction);
 };
 
-const groceriesDelete = function(uuid) {
+const groceriesDelete = function(uuid, from) {
   const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
-  axios.delete(url);
+  axios.delete(url).then(function() {
+    if (from === 'items') return;
+    groceriesRead();
+  });
 };
 
 const groceriesUpdate = function(index) {
