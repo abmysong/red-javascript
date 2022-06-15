@@ -58,11 +58,16 @@ const groceriesDelete = function(uuid, from) {
   });
 };
 
-const groceriesUpdate = function(index) {
-  const url = 'http://localhost:3100/api/v1/groceries/' + index;
-  const expire = document.getElementsByName('groceries-expire')[index].value;
+const groceriesUpdate = function(uuid) {
+  console.log(uuid);
+  const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
+  const groceryNameObject = document.getElementsByName('grocery-name')[0];
+  const groceryEnterObject = document.getElementsByName('grocery-enter')[0];
+  const groceryExpireObject = document.getElementsByName('grocery-expire')[0];
   const grocery = {
-    expire: expire
+    name: groceryNameObject.value,
+    enter: groceryEnterObject.value,
+    expire: groceryExpireObject.value
   };
   axios.patch(url, grocery).then(groceriesRead);
 };
