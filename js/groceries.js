@@ -37,11 +37,13 @@ const groceriesRead = function() {
       const groceriesEnterObject = document.getElementsByName('groceries-enter')[index];
       const groceriesExpireObject = document.getElementsByName('groceries-expire')[index];
       const groceriesDeleteObject = document.getElementsByName('groceries-delete')[index];
+      const groceriesUpdateObject = document.getElementsByName('groceries-update')[index];
       groceriesNoObject.innerHTML = Number(index) + 1;
       groceriesNameObject.innerHTML = groceries[index].name;
       groceriesEnterObject.innerHTML = groceries[index].enter;
       groceriesExpireObject.innerHTML = groceries[index].expire;
       groceriesDeleteObject.uuid = groceries[index].uuid;
+      groceriesUpdateObject.uuid = groceries[index].uuid;
     }
     console.log('Readed', groceries);
   };
