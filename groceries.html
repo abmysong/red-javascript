@@ -141,6 +141,25 @@ const modalToggle = function(uuid) {
   document.body.classList.toggle('o-hidden');
   document.getElementsByClassName('modal-background')[0].classList.toggle('active');
   console.log(uuid);
+  // uuid를 못받았을 경우 종료
+  if (!uuid) {
+    return;
+  }
+  let grocery = null;
+  for (let index = 0; index < groceries.length; index++) {
+    // console.log(groceries[index]);
+    if (uuid === groceries[index].uuid) {
+      grocery = groceries[index];
+      break;
+    }
+  }
+  console.log(grocery);
+  const groceryNameObject = document.getElementsByName('grocery-name')[0];
+  const groceryEnterObject = document.getElementsByName('grocery-enter')[0];
+  const groceryExpireObject = document.getElementsByName('grocery-expire')[0];
+  groceryNameObject.value = grocery.name;
+  groceryEnterObject.value = grocery.enter;
+  groceryExpireObject.value = grocery.expire;
 }
 groceriesRead();
 </script>
