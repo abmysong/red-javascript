@@ -69,7 +69,13 @@ const groceriesUpdate = function(uuid) {
     enter: groceryEnterObject.value,
     expire: groceryExpireObject.value
   };
-  axios.patch(url, grocery).then(groceriesRead);
+  
+  axios.patch(url, grocery).then(function() {
+    // alert창 보이기, 모달창 닫기, groceriesRead 함수 호출
+    window.alert('완료');
+    modalToggle();
+    groceriesRead();
+  });
 };
 
 // groceriesRead();
