@@ -163,5 +163,14 @@ const modalToggle = function(uuid) {
   groceryExpireObject.value = grocery.expire;
   groceryUpdateObject.uuid = grocery.uuid;
 }
-groceriesRead();
+
+// 쿼리스트링 받기
+const queryString = new URLSearchParams(window.location.search);
+const q = queryString.get('q') || '';
+console.log(q);
+const qObjects = document.getElementsByName('q')[0];
+qObjects.value = q;
+qObjects.focus();
+
+groceriesRead(q);
 </script>
