@@ -55,22 +55,22 @@
                 <th>
                   <span class="title-names">
                     Name
-                    <span class="material-icons active">arrow_drop_up</span>
-                    <span class="material-icons">arrow_drop_down</span>
+                    <span class="material-icons active"><a href="?orderByKey=name&orderByType=asc">arrow_drop_up</a></span>
+                    <span class="material-icons"><a href="?orderByKey=name&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>
                   <span class="title-names">
                     Enter
-                    <span class="material-icons">arrow_drop_up</span>
-                    <span class="material-icons">arrow_drop_down</span>
+                    <span class="material-icons"><a href="?orderByKey=enter&orderByType=asc">arrow_drop_up</a></span>
+                    <span class="material-icons"><a href="?orderByKey=enter&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>
                   <span class="title-names">
                     Expire
-                    <span class="material-icons">arrow_drop_up</span>
-                    <span class="material-icons">arrow_drop_down</span>
+                    <span class="material-icons"><a href="?orderByKey=expire&orderByType=asc">arrow_drop_up</a></span>
+                    <span class="material-icons"><a href="?orderByKey=expire&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>Edit</th>
@@ -167,10 +167,11 @@ const modalToggle = function(uuid) {
 // 쿼리스트링 받기
 const queryString = new URLSearchParams(window.location.search);
 const q = queryString.get('q') || '';
+const orderByKey = queryString.get('orderByKey') || 'name';
+const orderByType = queryString.get('orderByType') || 'asc';
 console.log(q);
 const qObjects = document.getElementsByName('q')[0];
 qObjects.value = q;
 qObjects.focus();
-
-groceriesRead(q);
+groceriesRead(q, orderByKey, orderByType);
 </script>

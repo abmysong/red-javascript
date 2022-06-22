@@ -10,7 +10,7 @@ const groceriesCreate = function(index, uuid) {
   axios.post('http://localhost:3100/api/v1/groceries', grocery);
 };
 
-const groceriesRead = function(q) {
+const groceriesRead = function(q, orderByKey, orderByType) {
   const successFunction = function(response) {
     groceries = response.data.groceries;
     const tagTbodyParent = document.getElementById('tag-tbody-parent');
@@ -34,7 +34,7 @@ const groceriesRead = function(q) {
     }
     console.log('Readed', groceries);
   };
-  axios.get('http://localhost:3100/api/v1/groceries?q=' + q).then(successFunction);
+  axios.get('http://localhost:3100/api/v1/groceries?q=' + q + '&orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
 const groceriesDelete = function(uuid, from) {
@@ -61,7 +61,7 @@ const groceriesUpdate = function(uuid) {
     // alert창 보이기, 모달창 닫기, groceriesRead 함수 호출
     window.alert('완료');
     modalToggle();
-    groceriesRead();
+    groceriesRead(q, orderByKey, orderByType);
   });
 };
 
