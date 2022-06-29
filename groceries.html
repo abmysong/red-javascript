@@ -55,22 +55,22 @@
                 <th>
                   <span class="title-names">
                     Name
-                    <span class="material-icons active"><a href="?orderByKey=name&orderByType=asc">arrow_drop_up</a></span>
-                    <span class="material-icons"><a href="?orderByKey=name&orderByType=desc">arrow_drop_down</a></span>
+                    <span id="order-name-asc" class="material-icons"><a href="?orderByKey=name&orderByType=asc">arrow_drop_up</a></span>
+                    <span id="order-name-desc" class="material-icons"><a href="?orderByKey=name&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>
                   <span class="title-names">
                     Enter
-                    <span class="material-icons"><a href="?orderByKey=enter&orderByType=asc">arrow_drop_up</a></span>
-                    <span class="material-icons"><a href="?orderByKey=enter&orderByType=desc">arrow_drop_down</a></span>
+                    <span id="order-enter-asc" class="material-icons"><a href="?orderByKey=enter&orderByType=asc">arrow_drop_up</a></span>
+                    <span id="order-enter-desc" class="material-icons"><a href="?orderByKey=enter&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>
                   <span class="title-names">
                     Expire
-                    <span class="material-icons"><a href="?orderByKey=expire&orderByType=asc">arrow_drop_up</a></span>
-                    <span class="material-icons"><a href="?orderByKey=expire&orderByType=desc">arrow_drop_down</a></span>
+                    <span id="order-expire-asc" class="material-icons"><a href="?orderByKey=expire&orderByType=asc">arrow_drop_up</a></span>
+                    <span id="order-expire-desc" class="material-icons"><a href="?orderByKey=expire&orderByType=desc">arrow_drop_down</a></span>
                   </span>
                 </th>
                 <th>Edit</th>
@@ -169,6 +169,7 @@ const queryString = new URLSearchParams(window.location.search);
 const q = queryString.get('q') || '';
 const orderByKey = queryString.get('orderByKey') || 'name';
 const orderByType = queryString.get('orderByType') || 'asc';
+document.getElementById('order-' + orderByKey + '-' + orderByType).classList.add('active');
 console.log(q);
 const qObjects = document.getElementsByName('q')[0];
 qObjects.value = q;
