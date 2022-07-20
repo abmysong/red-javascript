@@ -41,7 +41,7 @@ const groceriesDelete = function(uuid, from) {
   const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
   axios.delete(url).then(function() {
     if (from === 'items') return;
-    groceriesRead();
+    groceriesRead(q, orderByKey, orderByType);
   });
 };
 

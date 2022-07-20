@@ -1,5 +1,5 @@
-const queryString = new URLSearchParams(window.location.search);
-const nameText = queryString.get('input-text');
+// const queryString = new URLSearchParams(window.location.search);
+// const nameText = queryString.get('input-text');
 // const inputTextObjects = document.getElementsByName('input-text');
 // const inputTextObject = inputTextObjects[0];
 
@@ -23,11 +23,11 @@ const itemsCreate = function(form) {
   };
   axios.post('http://localhost:3100/api/v1/items', item).then(function() {
     itemNameObject.value = '';
-    itemsRead();
+    itemsRead(orderByKey, orderByType);
   });
 };
 
-const itemsRead = function() {
+const itemsRead = function(orderByKey, orderByType) {
   const successFunction = function(response) {
     items = response.data.items;
     const tagTbodyParent = document.getElementById('tag-tbody-parent');
@@ -52,12 +52,14 @@ const itemsRead = function() {
     }
     console.log('Readed', items);
   };
-  axios.get('http://localhost:3100/api/v1/items').then(successFunction);
+  axios.get('http://localhost:3100/api/v1/items?orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
 const itemsDelete = function(index) {
   const url = 'http://localhost:3100/api/v1/items/' + index;
-  axios.delete(url).then(itemsRead);
+  axios.delete(url).then(function() {
+    itemsRead(orderByKey, orderByType);
+  });
 };
 
 const itemsUpdate = function(index) {
@@ -66,7 +68,9 @@ const itemsUpdate = function(index) {
   const item = {
     expire: expire
   };
-  axios.patch(url, item).then(itemsRead);
+  axios.patch(url, item).then(function() {
+    itemsRead(orderByKey, orderByType);
+  });
 };
 
 const itemsCheck = function(event, index) {
@@ -80,4 +84,5 @@ const itemsCheck = function(event, index) {
   }
 };
 
-itemsRead();
+// itemsRead();
+// HTML에서 itemsRead 호출 중복 통신
