@@ -45,25 +45,26 @@ const itemsRead = function(orderByKey, orderByType) {
       itemsEnterObject.innerHTML = items[index].enter;
       itemsExpireObject.value = items[index].expire;
       itemsExpireObject.index = index;
-      itemsDeleteObject.index = index;
       itemsCheckObject.index = index;
       // backend에서 checked = true를 받으면 check 하기
       itemsCheckObject.checked = items[index].checked;
+      itemsDeleteObject.uuid = items[index].uuid;
+      itemsExpireObject.uuid = items[index].uuid;
     }
     console.log('Readed', items);
   };
   axios.get('http://localhost:3100/api/v1/items?orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
-const itemsDelete = function(index) {
-  const url = 'http://localhost:3100/api/v1/items/' + index;
+const itemsDelete = function(uuid) {
+  const url = 'http://localhost:3100/api/v1/items/' + uuid;
   axios.delete(url).then(function() {
     itemsRead(orderByKey, orderByType);
   });
 };
 
-const itemsUpdate = function(index) {
-  const url = 'http://localhost:3100/api/v1/items/' + index;
+const itemsUpdate = function(index, uuid) {
+  const url = 'http://localhost:3100/api/v1/items/' + uuid;
   const expire = document.getElementsByName('items-expire')[index].value;
   const item = {
     expire: expire

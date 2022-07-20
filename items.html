@@ -86,9 +86,9 @@
                 <td><input type="checkbox" name="items-check" onchange="itemsCheck(event, index)" /></td>
                 <td name="items-name"></td>
                 <td name="items-enter"></td>
-                <td class="td-expire"><input type="date" name="items-expire" value="" onchange="itemsUpdate(index);" /></td>
+                <td class="td-expire"><input type="date" name="items-expire" value="" onchange="itemsUpdate(index, uuid);" /></td>
                 <td class="td-delete">
-                  <button class="button-delete" name="items-delete" onclick="itemsDelete(index);"><span class="material-icons">delete</span></button>
+                  <button class="button-delete" name="items-delete" onclick="itemsDelete(uuid);"><span class="material-icons">delete</span></button>
                 </td>
               </tr>
             </tbody>
