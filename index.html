@@ -8,6 +8,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet">
   <link href="./css/index.css" rel="stylesheet">
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/members.js"></script>
 </head>
 <body>
   <div class="wrap">
@@ -32,7 +34,7 @@
           <ul class="account-menu">
             <li>Guest</li>
             <li><a href="./login.html">Login</a></li>
-            <li>Hello 홍길동!</li>
+            <li onclick="membersCheck()">Hello 홍길동!</li>
             <li>Logout</li>
           </ul>
         </a>
