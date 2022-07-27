@@ -18,6 +18,8 @@ const membersLogin = function(form) {
   axios.post('http://localhost:3100/api/v1/members/login', member).then(function(response) {
     axiosDefaultsHeaders(response.data.token);
     window.location.href = '/';
+  }).catch(function(error) {
+    alert(error.response.data.message);
   });
 };
 
