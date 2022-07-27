@@ -10,6 +10,7 @@
   <link href="./css/index.css" rel="stylesheet">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
+  <script src="./js/members.js"></script>
   <script src="./js/groceries.js"></script>
 </head>
 <body>
@@ -33,10 +34,9 @@
         <a href="#" id="menu-a-account" onclick="event.preventDefault(); accountToggle();">
           <span class="material-icons-outlined">account_circle</span>
           <ul class="account-menu">
-            <li>Guest</li>
-            <li><a href="./login.html">Login</a></li>
-            <li>Hello 홍길동!</li>
-            <li>Logout</li>
+            <li id="loginButton"><a href="./login.html">Login</a></li>
+            <li id="loginName"></li>
+            <li id="logoutButton" onclick="membersLogout()">Logout</li>
           </ul>
         </a>
       </div>
@@ -185,4 +185,6 @@ window.addEventListener('keydown', function(event) {
     modalToggle();
   }
 });
+
+membersCheck();
 </script>

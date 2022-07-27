@@ -11,6 +11,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
+  <script src="./js/members.js"></script>
   <script src="./js/items.js"></script>
   <script src="./js/groceries.js"></script>
 </head>
@@ -35,10 +36,9 @@
         <a href="#" id="menu-a-account" onclick="event.preventDefault(); accountToggle();">
           <span class="material-icons-outlined">account_circle</span>
           <ul class="account-menu">
-            <li>Guest</li>
-            <li><a href="./login.html">Login</a></li>
-            <li>Hello 홍길동!</li>
-            <li>Logout</li>
+            <li id="loginButton"><a href="./login.html">Login</a></li>
+            <li id="loginName"></li>
+            <li id="logoutButton" onclick="membersLogout()">Logout</li>
           </ul>
         </a>
       </div>
@@ -101,13 +101,15 @@
 </body>
 </html>
 <script>
-  const queryString = new URLSearchParams(window.location.search);
-  const orderByKey = queryString.get('orderByKey') || 'name';
-  const orderByType = queryString.get('orderByType') || 'asc';
-  document.getElementById('order-' + orderByKey + '-' + orderByType).classList.add('active');
-  itemsRead(orderByKey, orderByType);
+const queryString = new URLSearchParams(window.location.search);
+const orderByKey = queryString.get('orderByKey') || 'name';
+const orderByType = queryString.get('orderByType') || 'asc';
+document.getElementById('order-' + orderByKey + '-' + orderByType).classList.add('active');
+itemsRead(orderByKey, orderByType);
 
-  const accountToggle = function() {
-    document.getElementsByClassName('account-menu')[0].classList.toggle('active');
-  }
+const accountToggle = function() {
+  document.getElementsByClassName('account-menu')[0].classList.toggle('active');
+}
+
+membersCheck();
 </script>
