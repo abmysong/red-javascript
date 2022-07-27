@@ -32,10 +32,10 @@
         <a href="#!" id="menu-a-account" onclick="event.preventDefault(); accountToggle();">
           <span class="material-icons-outlined">account_circle</span>
           <ul class="account-menu">
-            <li>Guest</li>
-            <li><a href="./login.html">Login</a></li>
-            <li onclick="membersCheck()">Hello 홍길동!</li>
-            <li>Logout</li>
+            <!-- <li>Guest</li> -->
+            <li id="loginButton"><a href="./login.html">Login</a></li>
+            <li id="loginName"></li>
+            <li id="logoutButton" onclick="membersLogout()">Logout</li>
           </ul>
         </a>
       </div>
@@ -54,4 +54,6 @@
 const accountToggle = function() {
   document.getElementsByClassName('account-menu')[0].classList.toggle('active');
 }
+
+membersCheck();
 </script>

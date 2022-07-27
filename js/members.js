@@ -22,8 +22,24 @@ const membersLogin = function(form) {
 };
 
 const membersCheck = function() {
-  debugger;
+  const loginButton = document.getElementById('loginButton');
+  const loginName = document.getElementById('loginName');
+  const logoutButton = document.getElementById('logoutButton');
   axios.get('http://localhost:3100/api/v1/members/login').then(function(response) {
     console.log(response.data.decoded);
+    loginButton.style.display = 'none';
+    loginName.style.display = 'block';
+    loginName.innerHTML = 'Hello ' + response.data.decoded.name + '!';
+    logoutButton.style.display = 'block';
+  }).catch(function() {
+    loginButton.style.display = 'block';
+    loginName.style.display = 'none';
+    logoutButton.style.display = 'none';
   });
+};
+
+const membersLogout = function() {
+  axios.defaults.headers.common['x-jwt-token'] = null;
+  localStorage.removeItem('x-jwt-token');
+  window.location.href = '/login.html';
 };
