@@ -23,7 +23,7 @@ const membersLogin = function(form) {
   });
 };
 
-const membersCheck = function() {
+const membersCheck = function(callback) {
   const loginButton = document.getElementById('loginButton');
   const loginName = document.getElementById('loginName');
   const logoutButton = document.getElementById('logoutButton');
@@ -33,6 +33,7 @@ const membersCheck = function() {
     loginName.style.display = 'block';
     loginName.innerHTML = 'Hello ' + response.data.decoded.name + '!';
     logoutButton.style.display = 'block';
+    callback();
   }).catch(function() {
     loginButton.style.display = 'block';
     loginName.style.display = 'none';

@@ -37,6 +37,13 @@ const groceriesRead = function(q, orderByKey, orderByType) {
   axios.get('http://localhost:3100/api/v1/groceries?q=' + q + '&orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
+const groceriesCount = function() {
+  const successFunction = function(response) {
+    document.getElementById('menu-groceries-counter').innerHTML = response.data.count;
+  };
+  axios.get('http://localhost:3100/api/v1/groceries/count').then(successFunction);
+};
+
 const groceriesDelete = function(uuid, from) {
   const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
   axios.delete(url).then(function() {
