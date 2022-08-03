@@ -37,6 +37,7 @@ const groceriesRead = function(q, orderByKey, orderByType) {
   axios.get('http://localhost:3100/api/v1/groceries?q=' + q + '&orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
+// callback 적용
 const groceriesCount = function() {
   const successFunction = function(response) {
     document.getElementById('menu-groceries-counter').innerHTML = response.data.count;

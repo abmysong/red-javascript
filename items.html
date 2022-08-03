@@ -29,7 +29,7 @@
       </div>
       <div class="menu-groceries">
         <a href="./groceries.html" id="menu-a-groceries"><span class="material-icons">kitchen</span></a>
-        <div><span id="menu-groceries-counter">1</span></div>
+        <div><span id="menu-groceries-counter">0</span></div>
       </div>
       <div class="empty"></div>
       <div>
@@ -105,11 +105,14 @@ const queryString = new URLSearchParams(window.location.search);
 const orderByKey = queryString.get('orderByKey') || 'name';
 const orderByType = queryString.get('orderByType') || 'asc';
 document.getElementById('order-' + orderByKey + '-' + orderByType).classList.add('active');
-itemsRead(orderByKey, orderByType);
 
 const accountToggle = function() {
   document.getElementsByClassName('account-menu')[0].classList.toggle('active');
 }
 
-membersCheck();
+// callback 패턴
+membersCheck(function() {
+  groceriesCount();
+  itemsRead(orderByKey, orderByType);
+});
 </script>
