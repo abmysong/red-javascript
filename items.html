@@ -10,7 +10,6 @@
   <link href="./css/index.css" rel="stylesheet">
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src="https://momentjs.com/downloads/moment.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.1.0/uuidv4.min.js"></script>
   <script src="./js/members.js"></script>
   <script src="./js/items.js"></script>
   <script src="./js/groceries.js"></script>
@@ -86,9 +85,9 @@
                 <td><input type="checkbox" name="items-check" onchange="itemsCheck(event, index)" /></td>
                 <td name="items-name"></td>
                 <td name="items-enter"></td>
-                <td class="td-expire"><input type="date" name="items-expire" value="" onchange="itemsUpdate(index, uuid);" /></td>
+                <td class="td-expire"><input type="date" name="items-expire" value="" onchange="itemsUpdate(index, item_pk);" /></td>
                 <td class="td-delete">
-                  <button class="button-delete" name="items-delete" onclick="itemsDelete(uuid);"><span class="material-icons">delete</span></button>
+                  <button class="button-delete" name="items-delete" onclick="itemsDelete(item_pk);"><span class="material-icons">delete</span></button>
                 </td>
               </tr>
             </tbody>

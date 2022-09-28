@@ -16,7 +16,6 @@ let items;
 const itemsCreate = function(form) {
   const itemNameObject = form['name'];
   const item = {
-    uuid: uuidv4(),
     name: itemNameObject.value,
     enter: moment().format('YYYY-MM-DD'),
     expire: moment().add(14, 'days').format('YYYY-MM-DD')
@@ -48,23 +47,23 @@ const itemsRead = function(orderByKey, orderByType) {
       itemsCheckObject.index = index;
       // backend에서 checked = true를 받으면 check 하기
       itemsCheckObject.checked = items[index].checked;
-      itemsDeleteObject.uuid = items[index].uuid;
-      itemsExpireObject.uuid = items[index].uuid;
+      itemsDeleteObject.item_pk = items[index].item_pk;
+      itemsExpireObject.item_pk = items[index].item_pk;
     }
     console.log('Readed', items);
   };
   axios.get('http://localhost:3100/api/v1/items?orderByKey=' + orderByKey + '&orderByType=' + orderByType).then(successFunction);
 };
 
-const itemsDelete = function(uuid) {
-  const url = 'http://localhost:3100/api/v1/items/' + uuid;
+const itemsDelete = function(item_pk) {
+  const url = 'http://localhost:3100/api/v1/items/' + item_pk;
   axios.delete(url).then(function() {
     itemsRead(orderByKey, orderByType);
   });
 };
 
-const itemsUpdate = function(index, uuid) {
-  const url = 'http://localhost:3100/api/v1/items/' + uuid;
+const itemsUpdate = function(index, item_pk) {
+  const url = 'http://localhost:3100/api/v1/items/' + item_pk;
   const expire = document.getElementsByName('items-expire')[index].value;
   const item = {
     expire: expire
@@ -76,12 +75,12 @@ const itemsUpdate = function(index, uuid) {
 
 const itemsCheck = function(event, index) {
   console.log(event, index, items);
-  const uuid = items[index].uuid;
+  const item_pk = items[index].item_pk;
   
   if (event.target.checked) {
-    groceriesCreate(index, uuid);
+    groceriesCreate(item_pk);
   } else {
-    groceriesDelete(uuid, 'items');
+    groceriesDelete(item_pk, 'items');
   }
 };
 

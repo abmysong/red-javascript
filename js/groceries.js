@@ -1,13 +1,10 @@
 let groceries;
 
-const groceriesCreate = function(index, uuid) {
-  const grocery = {
-    uuid: uuid,
-    name: document.getElementsByName('items-name')[index].innerHTML,
-    enter: document.getElementsByName('items-enter')[index].innerHTML,
-    expire: document.getElementsByName('items-expire')[index].value
+const groceriesCreate = function(item_pk) {
+  const item = {
+    item_pk: item_pk
   };
-  axios.post('http://localhost:3100/api/v1/groceries', grocery);
+  axios.post('http://localhost:3100/api/v1/groceries', item);
 };
 
 const groceriesRead = function(q, orderByKey, orderByType) {
@@ -29,8 +26,8 @@ const groceriesRead = function(q, orderByKey, orderByType) {
       groceriesNameObject.innerHTML = groceries[index].name;
       groceriesEnterObject.innerHTML = groceries[index].enter;
       groceriesExpireObject.innerHTML = groceries[index].expire;
-      groceriesDeleteObject.uuid = groceries[index].uuid;
-      groceriesUpdateObject.uuid = groceries[index].uuid;
+      groceriesDeleteObject.grocery_pk = groceries[index].grocery_pk;
+      groceriesUpdateObject.grocery_pk = groceries[index].grocery_pk;
     }
     console.log('Readed', groceries);
   };
@@ -45,17 +42,17 @@ const groceriesCount = function() {
   axios.get('http://localhost:3100/api/v1/groceries/count').then(successFunction);
 };
 
-const groceriesDelete = function(uuid, from) {
-  const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
+const groceriesDelete = function(grocery_pk, from) {
+  const url = 'http://localhost:3100/api/v1/groceries/' + grocery_pk;
   axios.delete(url).then(function() {
     if (from === 'items') return;
     groceriesRead(q, orderByKey, orderByType);
   });
 };
 
-const groceriesUpdate = function(uuid) {
-  console.log(uuid);
-  const url = 'http://localhost:3100/api/v1/groceries/' + uuid;
+const groceriesUpdate = function(grocery_pk) {
+  console.log(grocery_pk);
+  const url = 'http://localhost:3100/api/v1/groceries/' + grocery_pk;
   const groceryNameObject = document.getElementsByName('grocery-name')[0];
   const groceryEnterObject = document.getElementsByName('grocery-enter')[0];
   const groceryExpireObject = document.getElementsByName('grocery-expire')[0];

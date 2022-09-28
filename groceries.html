@@ -27,7 +27,7 @@
       </div>
       <div class="menu-groceries">
         <a href="./groceries.html" id="menu-a-groceries" class="active"><span class="material-icons">kitchen</span></a>
-        <div><span id="menu-groceries-counter">1</span></div>
+        <div><span id="menu-groceries-counter">0</span></div>
       </div>
       <div class="empty"></div>
       <div>
@@ -87,10 +87,10 @@
                 <td name="groceries-enter"></td>
                 <td name="groceries-expire"></td>
                 <td class="td-update">
-                  <button class="button-update" name="groceries-update" onclick="modalToggle(uuid);"><span class="material-icons">edit_note</span></button>
+                  <button class="button-update" name="groceries-update" onclick="modalToggle(grocery_pk);"><span class="material-icons">edit_note</span></button>
                 </td>
                 <td class="td-delete">
-                  <button class="button-delete" name="groceries-delete" onclick="groceriesDelete(uuid, 'groceries');"><span class="material-icons">delete</span></button>
+                  <button class="button-delete" name="groceries-delete" onclick="groceriesDelete(grocery_pk, 'groceries');"><span class="material-icons">delete</span></button>
                 </td>
               </tr>
             </tbody>
@@ -126,7 +126,7 @@
         </table>
         <div class="modal-footer">
           <button class="button-close" onclick="event.preventDefault(); modalToggle();"><span class="material-icons">close</span></button>
-          <button class="button-update" name="grocery-update" onclick="event.preventDefault(); groceriesUpdate(uuid);" type="button"><span class="material-icons">edit_note</span></button>
+          <button class="button-update" name="grocery-update" onclick="event.preventDefault(); groceriesUpdate(grocery_pk);" type="button"><span class="material-icons">edit_note</span></button>
         </div>
       </form>
     </div>
@@ -137,18 +137,18 @@
 const accountToggle = function() {
   document.getElementsByClassName('account-menu')[0].classList.toggle('active');
 }
-const modalToggle = function(uuid) {
+const modalToggle = function(grocery_pk) {
   document.body.classList.toggle('o-hidden');
   document.getElementsByClassName('modal-background')[0].classList.toggle('active');
-  console.log(uuid);
-  // uuid를 못받았을 경우 종료
-  if (!uuid) {
+  console.log(grocery_pk);
+  // grocery_pk를 못받았을 경우 종료
+  if (!grocery_pk) {
     return;
   }
   let grocery = null;
   for (let index = 0; index < groceries.length; index++) {
     // console.log(groceries[index]);
-    if (uuid === groceries[index].uuid) {
+    if (grocery_pk === groceries[index].grocery_pk) {
       grocery = groceries[index];
       break;
     }
@@ -161,7 +161,7 @@ const modalToggle = function(uuid) {
   groceryNameObject.value = grocery.name;
   groceryEnterObject.value = grocery.enter;
   groceryExpireObject.value = grocery.expire;
-  groceryUpdateObject.uuid = grocery.uuid;
+  groceryUpdateObject.grocery_pk = grocery.grocery_pk;
 }
 
 // 쿼리스트링 받기
@@ -186,5 +186,5 @@ window.addEventListener('keydown', function(event) {
   }
 });
 
-membersCheck();
+membersCheck(groceriesCount);
 </script>
