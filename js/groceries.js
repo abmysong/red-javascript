@@ -67,6 +67,7 @@ const groceriesUpdate = function(grocery_pk) {
     window.alert('완료');
     modalToggle();
     groceriesRead(q, orderByKey, orderByType);
+    groceriesCount();
   });
 };
 
