@@ -46,7 +46,7 @@ const itemsRead = function(orderByKey, orderByType) {
       itemsExpireObject.index = index;
       itemsCheckObject.index = index;
       // backend에서 checked = true를 받으면 check 하기
-      itemsCheckObject.checked = items[index].checked;
+      itemsCheckObject.checked = items[index].grocery_pk !== null;
       itemsDeleteObject.item_pk = items[index].item_pk;
       itemsExpireObject.item_pk = items[index].item_pk;
     }
